@@ -1,0 +1,20 @@
+{
+  "author": "Local",
+  "build": "116982",
+  "category": ["galactic-war"],
+  "context": "client",
+  "date": "2026-11-01",
+  "description": "Galactic War only. Your commander, fabbers, and factories build 100x faster. Metal and energy costs stay the same, so a build still waits if you cannot pay for it. The AI is unchanged. Skirmish is unchanged. Edit BUILD_SPEED in ui/mods/com.pa.local.gw_fast_build/gw_play.js to go faster or slower.",
+  "display_name": "GW Fast Build",
+  "enabled": true,
+  "icon": "coui://ui/mods/com.pa.local.gw_fast_build/icon.png",
+  "identifier": "com.pa.local.gw_fast_build",
+  "priority": 100,
+  "scenes": {
+    "gw_play": [
+      "coui://ui/mods/com.pa.local.gw_fast_build/gw_play.js"
+    ]
+  },
+  "signature": "not yet implemented",
+  "version": "1.0.0"
+}
