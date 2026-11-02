@@ -1,5 +1,7 @@
 # GW Fast Build
 
+![GW Fast Build](icon.png)
+
 Client mod for **Planetary Annihilation: Titans**. In Galactic War, your commander, fabbers, and factories build and produce at 100× speed. Metal and energy **costs stay the same**. A build still stalls if you cannot pay for it.
 
 The AI does not get this. Skirmish is unchanged. The script only loads on the Galactic War play scene.
