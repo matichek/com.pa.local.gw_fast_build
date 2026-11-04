@@ -11,6 +11,7 @@ var BUILD_SPEED = 100;
 
   var BUILD_ARMS = [
     "/pa/tools/commander_build_arm/commander_build_arm.json",
+    "/pa/units/commanders/tutorial_player_commander/tutorial_player_commander_arm.json",
     "/pa/units/land/fabrication_bot/fabrication_bot_build_arm.json",
     "/pa/units/land/fabrication_bot_adv/fabrication_bot_adv_build_arm.json",
     "/pa/units/land/fabrication_bot_combat/fabrication_bot_combat_build_arm.json",
@@ -23,6 +24,8 @@ var BUILD_SPEED = 100;
     "/pa/units/land/vehicle_factory_adv/vehicle_factory_adv_build_arm.json",
     "/pa/units/land/bot_support_commander/bot_support_commander_tool_build_arm.json",
     "/pa/units/land/unit_cannon/unit_cannon_build_arm.json",
+    "/pa/units/land/nuke_launcher/nuke_launcher_build_arm.json",
+    "/pa/units/land/anti_nuke_launcher/anti_nuke_launcher_build_arm.json",
     "/pa/units/air/fabrication_aircraft/fabrication_aircraft_build_arm.json",
     "/pa/units/air/fabrication_aircraft_adv/fabrication_aircraft_adv_build_arm.json",
     "/pa/units/air/air_factory/air_factory_build_arm.json",
@@ -50,6 +53,7 @@ var BUILD_SPEED = 100;
     "/pa/units/orbital/orbital_factory/orbital_factory.json",
     "/pa/units/orbital/orbital_launcher/orbital_launcher.json",
     "/pa/units/land/unit_cannon/unit_cannon.json",
+    "/pa/units/land/anti_nuke_launcher/anti_nuke_launcher.json",
   ];
 
   var MODS = [];
@@ -97,13 +101,17 @@ var BUILD_SPEED = 100;
     inventory.mods(kept.concat(MODS));
   };
 
-  var proto = null;
-  var inventory = playerInventory();
-  if (inventory) {
-    proto = Object.getPrototypeOf(inventory);
-  }
+  var logActive = function () {
+    console.log("GW Fast Build active. Construction rate x" + BUILD_SPEED);
+  };
 
-  if (proto && !proto.__gwFastBuildWrapped && proto.applyCards) {
+  // Wrap applyCards on the inventory prototype. The log runs only after the
+  // fast-build mods are actually added to the player's inventory.
+  var wrapApplyCards = function (inventory) {
+    var proto = Object.getPrototypeOf(inventory);
+    if (!proto || proto.__gwFastBuildWrapped || !proto.applyCards) {
+      return;
+    }
     var original = proto.applyCards;
     proto.applyCards = function (done) {
       var self = this;
@@ -111,6 +119,7 @@ var BUILD_SPEED = 100;
         var player = playerInventory();
         if (player && self === player) {
           giveFastBuild(self);
+          logActive();
         }
         if (done) {
           done();
@@ -118,7 +127,7 @@ var BUILD_SPEED = 100;
       });
     };
     proto.__gwFastBuildWrapped = true;
-  }
+  };
 
   var attempts = 0;
   var tick = function () {
@@ -127,15 +136,18 @@ var BUILD_SPEED = 100;
       attempts += 1;
       if (attempts <= 50) {
         _.delay(tick, 200);
+      } else {
+        console.warn("GW Fast Build not active: no player inventory found after 10 s.");
       }
       return;
     }
+    wrapApplyCards(current);
     if (current.applyCards) {
       current.applyCards();
     } else {
       giveFastBuild(current);
+      logActive();
     }
-    console.log("GW Fast Build active. Construction rate x" + BUILD_SPEED);
   };
   tick();
 })();
