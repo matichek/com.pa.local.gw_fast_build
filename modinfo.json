@@ -3,16 +3,16 @@
   "build": "116982",
   "category": ["titans", "gw", "gameplay"],
   "context": "client",
-  "date": "2026-11-04",
-  "description": "Galactic War only. Your commander, fabbers, factories, and missile launchers build 100x faster. Metal and energy costs stay the same, so a build still waits if you cannot pay for it. Enemy AIs are unchanged. Allied Sub Commanders also build faster. Skirmish is unchanged. Edit BUILD_SPEED in ui/mods/com.pa.local.gw_fast_build/gw_play.js to go faster or slower.",
+  "date": "2026-11-05",
+  "description": "Galactic War only. Your commander, fabbers, factories, and missile launchers build 100x faster. Metal and energy costs stay the same, so a build still waits if you cannot pay for it. Enemy AIs are unchanged. Allied Sub Commanders also build faster. Skirmish is unchanged. Edit BUILD_SPEED in ui/mods/com.pa.matichek.gw_fast_build/gw_play.js to go faster or slower.",
   "display_name": "GW Fast Build",
-  "forum": "https://github.com/matichek/com.pa.local.gw_fast_build/discussions",
-  "icon": "https://raw.githubusercontent.com/matichek/com.pa.local.gw_fast_build/master/icon.png",
-  "identifier": "com.pa.local.gw_fast_build",
+  "forum": "https://github.com/matichek/com.pa.matichek.gw_fast_build/discussions",
+  "icon": "https://raw.githubusercontent.com/matichek/com.pa.matichek.gw_fast_build/master/icon.png",
+  "identifier": "com.pa.matichek.gw_fast_build",
   "priority": 100,
   "scenes": {
     "gw_play": [
-      "coui://ui/mods/com.pa.local.gw_fast_build/gw_play.js"
+      "coui://ui/mods/com.pa.matichek.gw_fast_build/gw_play.js"
     ]
   },
   "signature": " ",

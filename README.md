@@ -13,12 +13,12 @@ Enemy AIs are unchanged. Allied Sub Commanders also build faster. Skirmish is un
 ## Install
 
 1. Download or clone this repository.
-2. Copy the `com.pa.local.gw_fast_build` folder into your Titans client mods folder. The folder name must stay `com.pa.local.gw_fast_build`.
+2. Copy the `com.pa.matichek.gw_fast_build` folder into your Titans client mods folder. The folder name must stay `com.pa.matichek.gw_fast_build`.
 
    Windows:
 
    ```
-   %LOCALAPPDATA%\Uber Entertainment\Planetary Annihilation\client_mods\com.pa.local.gw_fast_build
+   %LOCALAPPDATA%\Uber Entertainment\Planetary Annihilation\client_mods\com.pa.matichek.gw_fast_build
    ```
 
 3. Start Titans. Enable **GW Fast Build** in the mods list if it is not already on.
@@ -26,7 +26,7 @@ Enemy AIs are unchanged. Allied Sub Commanders also build faster. Skirmish is un
 
 ## Change the speed
 
-Open `ui/mods/com.pa.local.gw_fast_build/gw_play.js` and edit the number at the top:
+Open `ui/mods/com.pa.matichek.gw_fast_build/gw_play.js` and edit the number at the top:
 
 ```js
 var BUILD_SPEED = 100;
